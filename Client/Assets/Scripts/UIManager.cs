@@ -1,6 +1,7 @@
 using RiptideNetworking;
 using RiptideNetworking.Utils;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -20,9 +21,31 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    [Header("Connect")]
+    [SerializeField] private GameObject connectUI;
+    [SerializeField] private InputField usernameField;
+
     private void Awake()
     {
         Singleton = this;
     }
 
+    public void ConnectClicked()
+    {
+        usernameField.interactable = false;
+        connectUI.SetActive(false);
+    }
+
+    public void BackToMain()
+    {
+        usernameField.interactable = true;
+        connectUI.SetActive(true);
+    }
+
+    public void SendName()
+    {
+        Message msg = Message.Create(MessageSendMode.reliable, (ushort)ClientToServerId.name);
+        msg.AddString(usernameField.text);
+        NetworkManager.Singleton.Client.Send(msg);
+    }
 }
