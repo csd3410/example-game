@@ -2,6 +2,11 @@ using RiptideNetworking;
 using RiptideNetworking.Utils;
 using UnityEngine;
 
+public enum ClientToServerId : ushort
+{
+    name = 1,
+}
+
 public class NetworkManager : MonoBehaviour
 {
     private static NetworkManager _singleton;
