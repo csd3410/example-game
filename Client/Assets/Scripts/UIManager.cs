@@ -1,18 +1,28 @@
-using System.Collections;
-using System.Collections.Generic;
+using RiptideNetworking;
+using RiptideNetworking.Utils;
 using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private static UIManager _singleton;
+    public static UIManager Singleton
     {
-        
+        get => _singleton;
+        private set
+        {
+            if (_singleton == null)
+                _singleton = value;
+            else if (_singleton != value)
+            {
+                Debug.Log($"{nameof(UIManager)} instance already exists, destroying duplicate!");
+                Destroy(value);
+            }
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Awake()
     {
-        
+        Singleton = this;
     }
+
 }
