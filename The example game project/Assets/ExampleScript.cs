@@ -7,12 +7,14 @@ public class ExampleScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+       // this is a test 
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        // this is a 2 test
     }
+
+    // this is a 3 test
 }
