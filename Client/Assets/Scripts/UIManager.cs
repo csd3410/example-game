@@ -34,6 +34,7 @@ public class UIManager : MonoBehaviour
     {
         usernameField.interactable = false;
         connectUI.SetActive(false);
+        NetworkManager.Singleton.Connect();
     }
 
     public void BackToMain()
