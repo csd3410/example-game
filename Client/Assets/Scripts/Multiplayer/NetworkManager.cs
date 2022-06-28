@@ -1,5 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
+using RiptideNetworking;
+using RiptideNetworking.Utils;
 using UnityEngine;
 
 public class NetworkManager : MonoBehaviour
@@ -20,9 +20,31 @@ public class NetworkManager : MonoBehaviour
         }
     }
 
+    public Client Client { get; private set; }
+
+    [SerializeField] private string ip;
+    [SerializeField] private ushort port;
+
     private void Awake()
     {
         Singleton = this;
     }
 
+    private void Start()
+    {
+        RiptideLogger.Initialize(Debug.Log, Debug.Log, Debug.LogWarning, Debug.LogError, false);
+
+        Client = new Client();
+        Client.Connect($"{ip}:{port}");
+    }
+
+    private void FixedUpdate()
+    {
+        Client.Tick();
+    }
+
+    private void OnApplicationQuit()
+    {
+        Client.Disconnect();
+    }
 }
