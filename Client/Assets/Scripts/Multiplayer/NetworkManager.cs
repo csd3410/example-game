@@ -82,10 +82,13 @@ public class NetworkManager : MonoBehaviour
     private void DidDisconnect(object sender, EventArgs e)
     {
         UIManager.Singleton.BackToMain();
+        foreach (Player player in Player.list.Values)
+            Destroy(player.gameObject);
     }
 
     private void PlayerLeft(object sender, ClientDisconnectedEventArgs e)
     {
-        Destroy(Player.list[e.Id].gameObject);
+        if (Player.list.TryGetValue(e.Id, out Player player))
+            Destroy(player.gameObject);
     }
 }

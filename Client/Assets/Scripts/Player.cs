@@ -11,8 +11,9 @@ public class Player : MonoBehaviour
     private string username;
 
     [SerializeField] private Transform camTranform;
+    [SerializeField] private PlayerAnimationManager animationManager;
 
-    private void OnDestroy()
+  private void OnDestroy()
     {
         list.Remove(Id);
     }
@@ -23,6 +24,7 @@ public class Player : MonoBehaviour
         if (!IsLocal)
         {
             camTranform.forward = forward;
+            animationManager.AnimateBasedOnSpeed();
         }
     }
 
