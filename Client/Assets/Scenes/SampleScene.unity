@@ -438,6 +438,7 @@ GameObject:
   m_Component:
   - component: {fileID: 709361789}
   - component: {fileID: 709361788}
+  - component: {fileID: 709361790}
   m_Layer: 0
   m_Name: NetworkManager
   m_TagString: Untagged
@@ -473,6 +474,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &709361790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 709361787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8887593a91ae67c418b91a09f9b4f549, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localPlayerPrefab: {fileID: 896107102755722393, guid: 1d6ab802e7e83664ca81857e5f0e1cfc, type: 3}
+  playerPrefab: {fileID: 896107102755722393, guid: 43f047dc5e7b60248888ac8ac5cd4901, type: 3}
 --- !u!1 &771562045
 GameObject:
   m_ObjectHideFlags: 0
@@ -577,7 +592,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &963194227
 Camera:
   m_ObjectHideFlags: 0
