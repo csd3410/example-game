@@ -5,7 +5,7 @@ using UnityEngine;
 public enum ServerToClientId : ushort
 {
     playerSpawned = 1,
-}
+} 
 
 public enum ClientToServerId : ushort
 {
@@ -35,6 +35,8 @@ public class NetworkManager : MonoBehaviour
     [SerializeField] private ushort port;
     [SerializeField] private ushort maxClientCount;
 
+    private int target = 60;
+
     private void Awake()
     {
         Singleton = this;
@@ -42,6 +44,7 @@ public class NetworkManager : MonoBehaviour
 
     private void Start()
     {
+        Application.targetFrameRate = 60;
         RiptideLogger.Initialize(Debug.Log, Debug.Log, Debug.LogWarning, Debug.LogError, false);
 
         Server = new Server();
@@ -51,6 +54,8 @@ public class NetworkManager : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (Application.targetFrameRate != target)
+            Application.targetFrameRate = target;
         Server.Tick();
     }
 
