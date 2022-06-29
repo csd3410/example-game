@@ -24,9 +24,18 @@ public class Player : MonoBehaviour
         list.Add(id, player);
     }
 
+    #region Messages
+    private void SendSpawned()
+    {
+        Message msg = Message.Create(MessageSendMode.reliable, (ushort)ServerToClientId.playerSpawned);
+        msg.AddUShort(Id);
+        msg.AddString(Username);
+    }
+
     [MessageHandler((ushort)ClientToServerId.name)]
     private static void Name(ushort fromClientId, Message msg)
     {
         Spawn(fromClientId, msg.GetString());
     }
+    #endregion
 }
