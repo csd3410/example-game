@@ -45,7 +45,7 @@ public class UIManager : MonoBehaviour
 
     public void SendName()
     {
-        Message msg = Message.Create(MessageSendMode.reliable, (ushort)ClientToServerId.name);
+        Message msg = Message.Create(MessageSendMode.reliable, ClientToServerId.name);
         msg.AddString(usernameField.text);
         NetworkManager.Singleton.Client.Send(msg);
     }
